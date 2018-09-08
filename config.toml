@@ -1,0 +1,45 @@
+base_url = "http://microdimen.com"
+
+# RSS
+title = "Microdimen Blog"
+description = "Blog about blockchain & rust"
+default_language = "en"
+
+theme = "dinkleberg"
+compile_sass = true
+
+highlight_code = true
+highlight_theme = "gruvbox-dark"
+
+generate_tags_pages = true
+generate_categories_pages = true
+
+[extra]
+blog_logo = "/images/avatar.png"
+blog_title="Microdimen Online"
+label_tags = "Tags"
+label_tag = "Tag"
+label_categories = "Categorias"
+label_category = "Category"
+label_relative_posts = "Relative Posts"
+label_next = "Next"
+label_previous = "Previous"
+label_page = "Page"
+label_of = "of"
+
+og_image="/images/avatar.png"
+og_alt_image="Microdimen Blog"
+og_site_name="Microdimen Blog"
+keywords="blockchain, ethereum, bitcoin, rust"
+
+educational_use="knowledge share"
+copyright_year="2018"
+
+sidebar = [
+    {name = "Open Source", urls=[
+        {name="Github", url="https://github.com/microdimen"},
+    ]},
+    {name = "Contact", urls=[
+        {name="Email", url="mailto:microdimen@gmail.com"}
+    ]}
+]
