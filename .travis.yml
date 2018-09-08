@@ -13,5 +13,5 @@ after_success: |
   [ $TRAVIS_PULL_REQUEST = false ] &&
   gutenberg build &&
   sudo pip install ghp-import &&
-  ghp-import -c microdimen.com -n public && 
+  ghp-import -c blog.microdimen.com -n public && 
   git push -fq https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
