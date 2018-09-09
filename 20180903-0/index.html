@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Blog">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title> Play with EVM </title>
+
+    
+        <link rel="apple-touch-icon" sizes="57x57" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-180x180.png">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" sizes="192x192"  href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="description" itemprop="about" content="Blog about blockchain &amp; rust">
+        <meta name="keywords" itemprop="keywords" content="blockchain, ethereum, bitcoin, rust">
+        <meta itemprop="headline" content="Microdimen Blog"/>
+
+        
+            <meta itemprop="educationalUse" content="knowledge share" />
+        
+
+        
+            <meta itemprop="copyrightYear" content="2018" />
+        
+
+        <!--  Social Media -->
+        <meta property="og:title" content="Microdimen Blog Play with EVM ">
+        <meta property="og:description" content=" Ethereum is commended as the decentralized-super computer in the world. It deserves the praise since it has the ability to handle almost all tasks, like token transfers and complex cryptographic calculations (if you have enough gas of course). EVM is the underlying operating system to drive smart contracts. In this post, I will explain what EVM is and how it actually works. ">
+        <meta property="og:image" content="&#x2F;images&#x2F;avatar.png">
+        <meta property="og:url" content="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;20180903-0&#x2F;">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="og:site_name" content="Microdimen Blog">
+        <meta name="twitter:image:alt" content="Play with EVM">
+
+
+        
+
+        
+    
+
+    
+
+    
+        <!-- Global site tag (gtag.js) - Google Analytics --><script async src='https://www.googletagmanager.com/gtag/js?id=UA-125478797-1'></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-125478797-1');</script>
+    
+
+    
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Code+Pro">
+        <link rel="stylesheet" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;site.css">
+    
+</head>
+<body>
+    
+    <div 
+     itemscope itemtype="http://schema.org/Organization">
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <a class="title" href="http:&#x2F;&#x2F;blog.microdimen.com">
+                
+                    
+                        <img src="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;images&#x2F;avatar.png" alt="">
+                    
+                    
+                        <h1 >Microdimen Online</h1>
+                    
+                
+            </a>
+        </div>
+    </header>
+    <div class="container padding-header">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="post post-page">
+    
+        
+            <meta itemprop="image" content="&#x2F;images&#x2F;avatar.png">
+        
+    
+    <header>
+        
+        <h1 class="title" itemprop="headline">Play with EVM</h1>
+        <address itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <span itemprop="name">Wayne Song</span>
+        </address>
+        <div class="extra">
+            
+
+            
+        </div>
+    </header>
+    <div itemprop="articleBody" class="body">
+      <h2 id="abstract">Abstract</h2>
+<p>Bitcoin is programmable based on Transaction Script. However, it’s not turing complete and there exists no global state shared between transactions. Ethereum is commended as the decentralized-super computer in the world. It deserves the praise since it has the ability to handle almost all tasks, like token transfers and complex cryptographic calculations (if you have enough gas of course). EVM is the underlying operating system to drive smart contracts. In this post, I will explain what EVM is and how it actually works. For more details on implementation, please refer to the project <a href="https://github.com/microdimen/evmplay">evmplay</a></p>
+<h2 id="transaction">Transaction</h2>
+<p>Everything happens because of transaction. There are roughly three kinds of transactions: Contract Creation, Contract Call, and ETH Transfer, and a typical transaction has the following attributes.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fa5c4b;">pub struct </span><span style="background-color:#282828;color:#8ec07c;">Transaction </span><span style="background-color:#282828;color:#fdf4c1aa;">{
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">pub </span><span style="background-color:#282828;color:#fdf4c1;">nonce</span><span style="background-color:#282828;color:#fdf4c1aa;">: U256,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">pub </span><span style="background-color:#282828;color:#fdf4c1;">gas_price</span><span style="background-color:#282828;color:#fdf4c1aa;">: U256,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">pub </span><span style="background-color:#282828;color:#fdf4c1;">gas</span><span style="background-color:#282828;color:#fdf4c1aa;">: U256,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">pub </span><span style="background-color:#282828;color:#fdf4c1;">action</span><span style="background-color:#282828;color:#fdf4c1aa;">: Action,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">pub </span><span style="background-color:#282828;color:#fdf4c1;">value</span><span style="background-color:#282828;color:#fdf4c1aa;">: U256,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">pub </span><span style="background-color:#282828;color:#fdf4c1;">data</span><span style="background-color:#282828;color:#fdf4c1aa;">: Bytes,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span></pre>
+<p>The above three kinds of transactions are categorized into two different actions: Create and Call. Action::Create is for contract creation apparently, while Action::Call is a little bit confusing.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fa5c4b;">pub enum </span><span style="background-color:#282828;color:#8ec07c;">Action </span><span style="background-color:#282828;color:#fdf4c1aa;">{
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">Create,
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">Call(Address),
+</span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span></pre>
+<p>We already know that contract’s account and normal user’s account are treated the same in Ethereum. They all have the properties of address and balance. If a transaction of Action::Call with some value is processed, it means that someone wants to transfer ETH to another, no matter whether the receiver is a normal account or a contract. On the other side, if the carried value equals zero, it means calling a function of the contract at the given address.</p>
+<h2 id="evm">EVM</h2>
+<p>EVM is a stack-based virtual machine executing instructions compiled from contracts written in Solidity. There exist over a hundred of different instructions supported by EVM now. Consider the following contract.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fdf4c1aa;">contract simple {
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">function say_hello()
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">public
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">pure
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">returns (string)
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">{
+</span><span style="background-color:#282828;color:#fdf4c1aa;">        </span><span style="background-color:#282828;color:#fdf4c1aa;">return &quot;hello world&quot;;
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span></pre>
+<p>We compile the code by solc or in the remix browser and get a long line of hex numbers.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fdf4c1aa;">0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060008060146101000a81548163ffffffff021916908363ffffffff1602179055506101b5806100816000396000f300608060405260043610610041576000357c010000000000000000000000000000000000000000000000000000000090… ffff1663ffffffff16815260200191505060405180910390a2505600a165627a7a723058209e74d819b2f8cb7962772e64024337d1336eb327b718c2c7977595721cf4105d0029
+</span></pre>
+<p>What is the above bytecode doing? A direct answer is that it’s responsible for the creation of your contract, and it works like an application installer you are familiar with on your laptop. Let’s translate the binary code into assembly instructions.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fdf4c1aa;">.code
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 80            // Push 0x80 and 0x40 into stack                       
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 40                      
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">MSTORE             // MSTORE(0x40, 0x80), reserve 0x80 bytes of memory for internal uses             
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">CALLVALUE          // Push the value carried by the transaction into stack      
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">DUP1               // Duplicate the top item
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">ISZERO             // Check if the CALLVALUE is zero           
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH [tag] 1       // Push the tag of Code Copy into stack           
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">JUMPI              // If CALLVALUE is zero, jump to tag 1, or continue           
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 0                        
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">DUP1                  
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">REVERT             // Failed to deploy contract, revert and cleanup          
+</span><span style="background-color:#282828;color:#fdf4c1aa;">tag 1                   
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">JUMPDEST           // The destination of jump         
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">POP                  
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 13f           // Push the length of code to copy          
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">DUP1                 
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 20            // Push the offset
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 0             // Push the start            
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">CODECOPY           // Copy 0x13f length of data from 0x20 to 0x0             
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">PUSH 0                        
+</span><span style="background-color:#282828;color:#fdf4c1aa;">  </span><span style="background-color:#282828;color:#fdf4c1aa;">RETURN                        
+</span></pre>
+<p>It’s quite interesting. Isn’t it? When we compile the contract, the compiler generates the deployment code for free. Now let’s dive into the source code to see how CODECOPY is implemented.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fa5c4b;">fn </span><span style="background-color:#282828;color:#8ec07c;">copy_data_to_memory</span><span style="background-color:#282828;color:#fdf4c1aa;">(</span><span style="background-color:#282828;color:#fdf4c1;">mem</span><span style="background-color:#282828;color:#fdf4c1aa;">: </span><span style="background-color:#282828;color:#fe8019;">&amp;</span><span style="background-color:#282828;color:#fa5c4b;">mut </span><span style="background-color:#282828;color:#fdf4c1aa;">Vec&lt;</span><span style="background-color:#282828;color:#fa5c4b;">u8</span><span style="background-color:#282828;color:#fdf4c1aa;">&gt;, </span><span style="background-color:#282828;color:#fdf4c1;">stack</span><span style="background-color:#282828;color:#fdf4c1aa;">: </span><span style="background-color:#282828;color:#fe8019;">&amp;</span><span style="background-color:#282828;color:#fa5c4b;">mut </span><span style="background-color:#282828;color:#fdf4c1aa;">Stack&lt;U256&gt;, </span><span style="background-color:#282828;color:#fdf4c1;">source</span><span style="background-color:#282828;color:#fdf4c1aa;">: </span><span style="background-color:#282828;color:#fe8019;">&amp;</span><span style="background-color:#282828;color:#fdf4c1aa;">[</span><span style="background-color:#282828;color:#fa5c4b;">u8</span><span style="background-color:#282828;color:#fdf4c1aa;">]) {
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> dest_offset </span><span style="background-color:#282828;color:#fe8019;">=</span><span style="background-color:#282828;color:#fdf4c1aa;"> stack.</span><span style="background-color:#282828;color:#fabd2f;">pop_back</span><span style="background-color:#282828;color:#fdf4c1aa;">();
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset </span><span style="background-color:#282828;color:#fe8019;">=</span><span style="background-color:#282828;color:#fdf4c1aa;"> stack.</span><span style="background-color:#282828;color:#fabd2f;">pop_back</span><span style="background-color:#282828;color:#fdf4c1aa;">();
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> size </span><span style="background-color:#282828;color:#fe8019;">=</span><span style="background-color:#282828;color:#fdf4c1aa;"> stack.</span><span style="background-color:#282828;color:#fabd2f;">pop_back</span><span style="background-color:#282828;color:#fdf4c1aa;">();
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size </span><span style="background-color:#282828;color:#fe8019;">= </span><span style="background-color:#282828;color:#fdf4c1;">U256</span><span style="background-color:#282828;color:#fdf4c1aa;">::from(source.</span><span style="background-color:#282828;color:#fabd2f;">len</span><span style="background-color:#282828;color:#fdf4c1aa;">());
+</span><span style="background-color:#282828;color:#fdf4c1aa;">
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> output_end </span><span style="background-color:#282828;color:#fe8019;">= </span><span style="background-color:#282828;color:#fa5c4b;">match</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset </span><span style="background-color:#282828;color:#fe8019;">&gt;</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size </span><span style="background-color:#282828;color:#fe8019;">||</span><span style="background-color:#282828;color:#fdf4c1aa;"> size </span><span style="background-color:#282828;color:#fe8019;">&gt;</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size </span><span style="background-color:#282828;color:#fe8019;">||</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset </span><span style="background-color:#282828;color:#fe8019;">+</span><span style="background-color:#282828;color:#fdf4c1aa;"> size </span><span style="background-color:#282828;color:#fe8019;">&gt;</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size {
+</span><span style="background-color:#282828;color:#fdf4c1aa;">        </span><span style="background-color:#282828;color:#d3869b;">true </span><span style="background-color:#282828;color:#fe8019;">=&gt; </span><span style="background-color:#282828;color:#fdf4c1aa;">{
+</span><span style="background-color:#282828;color:#fdf4c1aa;">            </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> zero_slice </span><span style="background-color:#282828;color:#fe8019;">= </span><span style="background-color:#282828;color:#fa5c4b;">if</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset </span><span style="background-color:#282828;color:#fe8019;">&gt;</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size {
+</span><span style="background-color:#282828;color:#fdf4c1aa;">                </span><span style="background-color:#282828;color:#fdf4c1aa;">mem.</span><span style="background-color:#282828;color:#fabd2f;">writeable_slice</span><span style="background-color:#282828;color:#fdf4c1aa;">(dest_offset, size)
+</span><span style="background-color:#282828;color:#fdf4c1aa;">            </span><span style="background-color:#282828;color:#fdf4c1aa;">} </span><span style="background-color:#282828;color:#fa5c4b;">else </span><span style="background-color:#282828;color:#fdf4c1aa;">{
+</span><span style="background-color:#282828;color:#fdf4c1aa;">                </span><span style="background-color:#282828;color:#fdf4c1aa;">mem.</span><span style="background-color:#282828;color:#fabd2f;">writeable_slice</span><span style="background-color:#282828;color:#fdf4c1aa;">(dest_offset </span><span style="background-color:#282828;color:#fe8019;">+</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size </span><span style="background-color:#282828;color:#fe8019;">-</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset, source_offset </span><span style="background-color:#282828;color:#fe8019;">+</span><span style="background-color:#282828;color:#fdf4c1aa;"> size </span><span style="background-color:#282828;color:#fe8019;">-</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size)
+</span><span style="background-color:#282828;color:#fdf4c1aa;">            </span><span style="background-color:#282828;color:#fdf4c1aa;">};
+</span><span style="background-color:#282828;color:#fdf4c1aa;">            </span><span style="background-color:#282828;color:#fa5c4b;">for</span><span style="background-color:#282828;color:#fdf4c1aa;"> i </span><span style="background-color:#282828;color:#fe8019;">in</span><span style="background-color:#282828;color:#fdf4c1aa;"> zero_slice.</span><span style="background-color:#282828;color:#fabd2f;">iter_mut</span><span style="background-color:#282828;color:#fdf4c1aa;">() {
+</span><span style="background-color:#282828;color:#fdf4c1aa;">                </span><span style="background-color:#282828;color:#fe8019;">*</span><span style="background-color:#282828;color:#fdf4c1aa;">i </span><span style="background-color:#282828;color:#fe8019;">= </span><span style="background-color:#282828;color:#d3869b;">0</span><span style="background-color:#282828;color:#fdf4c1aa;">;
+</span><span style="background-color:#282828;color:#fdf4c1aa;">            </span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span><span style="background-color:#282828;color:#fdf4c1aa;">            </span><span style="background-color:#282828;color:#fdf4c1aa;">source.</span><span style="background-color:#282828;color:#fabd2f;">len</span><span style="background-color:#282828;color:#fdf4c1aa;">()
+</span><span style="background-color:#282828;color:#fdf4c1aa;">        </span><span style="background-color:#282828;color:#fdf4c1aa;">},
+</span><span style="background-color:#282828;color:#fdf4c1aa;">        </span><span style="background-color:#282828;color:#d3869b;">false </span><span style="background-color:#282828;color:#fe8019;">=&gt; </span><span style="background-color:#282828;color:#fdf4c1aa;">(size.</span><span style="background-color:#282828;color:#fabd2f;">low_u64</span><span style="background-color:#282828;color:#fdf4c1aa;">() </span><span style="background-color:#282828;color:#fe8019;">+</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset.</span><span style="background-color:#282828;color:#fabd2f;">low_u64</span><span style="background-color:#282828;color:#fdf4c1aa;">()) </span><span style="background-color:#282828;color:#fe8019;">as </span><span style="background-color:#282828;color:#fa5c4b;">usize
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">};
+</span><span style="background-color:#282828;color:#fdf4c1aa;">
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fa5c4b;">if</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset </span><span style="background-color:#282828;color:#fe8019;">&lt;</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_size {
+</span><span style="background-color:#282828;color:#fdf4c1aa;">        </span><span style="background-color:#282828;color:#fa5c4b;">let</span><span style="background-color:#282828;color:#fdf4c1aa;"> output_begin </span><span style="background-color:#282828;color:#fe8019;">=</span><span style="background-color:#282828;color:#fdf4c1aa;"> source_offset.</span><span style="background-color:#282828;color:#fabd2f;">low_u64</span><span style="background-color:#282828;color:#fdf4c1aa;">() </span><span style="background-color:#282828;color:#fe8019;">as </span><span style="background-color:#282828;color:#fa5c4b;">usize</span><span style="background-color:#282828;color:#fdf4c1aa;">;
+</span><span style="background-color:#282828;color:#fdf4c1aa;">        </span><span style="background-color:#282828;color:#fdf4c1aa;">mem.</span><span style="background-color:#282828;color:#fabd2f;">write_slice</span><span style="background-color:#282828;color:#fdf4c1aa;">(dest_offset, </span><span style="background-color:#282828;color:#fe8019;">&amp;</span><span style="background-color:#282828;color:#fdf4c1aa;">source[output_begin</span><span style="background-color:#282828;color:#fe8019;">..</span><span style="background-color:#282828;color:#fdf4c1aa;">output_end]);
+</span><span style="background-color:#282828;color:#fdf4c1aa;">    </span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span><span style="background-color:#282828;color:#fdf4c1aa;">}
+</span></pre>
+<p>As you see, the implementation is straightforward. There is no mysterious magic inside EVM;)</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We still have a lot to talk about EVM. For example, how the contract is called, how the gas is calculated, and so on. What’s more, I have successfully compiled some contracts into WebAssembly and executed them inside eWASM, which worked like a charm. The main net of Ethereum will be switched to eWASM in near future and are you ready for that?</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>As you see, I’m not a native English speaker. Feel free to point out any typo or error in grammar. Thanks;)</p>
+
+    </div>
+    
+      <div id='disqus_thread'></div><script>var disqus_config = function () {};(function() {var d = document, s = d.createElement('script');s.src = 'https://blogmicrodimen.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript>
+    
+</article>
+
+
+        
+
+    </div>
+</body>
+</html>

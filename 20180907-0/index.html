@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Blog">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title> Transaction &amp; Script in Bitcoin Network </title>
+
+    
+        <link rel="apple-touch-icon" sizes="57x57" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;apple-icon-180x180.png">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" sizes="192x192"  href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="description" itemprop="about" content="Blog about blockchain &amp; rust">
+        <meta name="keywords" itemprop="keywords" content="blockchain, ethereum, bitcoin, rust">
+        <meta itemprop="headline" content="Microdimen Blog"/>
+
+        
+            <meta itemprop="educationalUse" content="knowledge share" />
+        
+
+        
+            <meta itemprop="copyrightYear" content="2018" />
+        
+
+        <!--  Social Media -->
+        <meta property="og:title" content="Microdimen Blog Transaction &amp; Script in Bitcoin Network ">
+        <meta property="og:description" content=" In this post I will give you a brief introduction about Bitcoin transactions from a programmer&#x27;s perspective. ">
+        <meta property="og:image" content="&#x2F;images&#x2F;avatar.png">
+        <meta property="og:url" content="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;20180907-0&#x2F;">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="og:site_name" content="Microdimen Blog">
+        <meta name="twitter:image:alt" content="Transaction &amp; Script in Bitcoin Network">
+
+
+        
+
+        
+    
+
+    
+
+    
+        <!-- Global site tag (gtag.js) - Google Analytics --><script async src='https://www.googletagmanager.com/gtag/js?id=UA-125478797-1'></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-125478797-1');</script>
+    
+
+    
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Code+Pro">
+        <link rel="stylesheet" href="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;site.css">
+    
+</head>
+<body>
+    
+    <div 
+     itemscope itemtype="http://schema.org/Organization">
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <a class="title" href="http:&#x2F;&#x2F;blog.microdimen.com">
+                
+                    
+                        <img src="http:&#x2F;&#x2F;blog.microdimen.com&#x2F;images&#x2F;avatar.png" alt="">
+                    
+                    
+                        <h1 >Microdimen Online</h1>
+                    
+                
+            </a>
+        </div>
+    </header>
+    <div class="container padding-header">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="post post-page">
+    
+        
+            <meta itemprop="image" content="&#x2F;images&#x2F;avatar.png">
+        
+    
+    <header>
+        
+        <h1 class="title" itemprop="headline">Transaction &amp; Script in Bitcoin Network</h1>
+        <address itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <span itemprop="name">Wayne Song</span>
+        </address>
+        <div class="extra">
+            
+
+            
+        </div>
+    </header>
+    <div itemprop="articleBody" class="body">
+      <h2 id="abstract">Abstract</h2>
+<p>In this post I will give you a brief introduction about Bitcoin transactions from a programmer's perspective.</p>
+<h2 id="wallet">wallet & Transaction</h2>
+<p>A wallet of Bitcoin is simply a client of the Bitcoin network. It's responsible for account creation, balance calculation, coin transaction, and so on. It can be a full-featured Bitcoin node which participates in processing the transaction and mining, and it can also be a simple mobile application which only knows how to send <code>RPC</code> requests. The underlying complexity of Bitcoin is hidden by the wallet, and it tries its best to act like a real &quot;Wallet&quot;.</p>
+<p>There are already two kinds of wallets in our daily life: purse and bank card. We fulfill our purses with colorful paper money. Imagine that a purse is an account, so the balance of the account &quot;purse&quot; is the total number of money it contains. However, the money saved in a bank card is only a <code>floating point number</code>. Every transaction is like doing math on your balance. The difference between purse and bank card is obvious. When you check your purse, you can only know your current balance. While you checking your card, you will see your current balance and a list of transactions. What's more, the balance of your card can be negative if it's a credit card;)</p>
+<p>Now let's take a tour about how a Bitcoin wallet works like a wallet. Suppose Alice install a wallet on her mobile phone and register an account for curiosity. After that, she tells her friend Bob her account's address to receive some coins. Then Bob launches his favourite wallet app and sends some coins to Alice. Well done. Everything is straight-forward thanks to the wallets. It's just like transferring money from one bank account to another, or from one purse to another.</p>
+<p>Be attention! There exists no concept of account book in Bitcoin network at all and everything you see is fraud. Be easy, I'm kidding;) What exists in Bitcoin is something called Unspent Transaction Output (<code>UTXO</code> for short). Wait a minute. What does transaction output mean? And &quot;unspent&quot; is for what? A transaction consists of two parts: inputs and outputs. Every unspent transaction output is a cryptographic puzzle which determines who has the right to spend it, and it also specifies how much money it can supply. The transaction input carries the <code>UTXO</code> together with the corresponding solution to the puzzle. If the transaction is approved and broadcasted to the Bitcoin network, we say that the <code>UTXO</code> is consumed. The change of this transaction is a new <code>UTXO</code> that can be spent in the next round of transaction. In order to show you the balance of your account, the wallet has to collect all <code>UTXO</code>s belong to you from the Bitcoin network and sum them up.</p>
+<h2 id="transaction-scripts">Transaction Scripts</h2>
+<p>In Bitcoin network, transaction script is the tool to make the puzzle work. It's a kind of stack-base language similar to Solidity which plays the same role in Ethereum network. But it's not turing complete compared with Solidity. Because there are no loops or complex flow control capabilities other than conditional flow control. This limitation ensures that no one can damage the network with an infinite loop or other kinds of logic bomb. Ehereum solves this problem by introducing the concept of gas. When a method of smart contract runs out of gas, it will be stopped and all the computation will be reverted by the virtual machine. There is another major difference between Transaction Script and Solidity. Transaction Script is sateless, which means that there exist no global state shared between executions. However, in Ethereum, a smart contract can have its global states persisted. And that is the point which makes a smart contract smart. What's more, the state machines of Bitcoin and Ethereum are both finite. We are guaranteed to have the same result with the same initial state and inputs.</p>
+<p>We can use transaction scripts to create various kinds of puzzles to make our boss happy. The vast majority of transactions processed on the Bitcoin network are based on the Pay-to-Public-Key-Hash (<code>P2PKH</code> for short) script. Next I will show you how exactly it works.</p>
+<p>We have mentioned that Bob has sent some coins to Alice. When Bob tells his wallet he wants to spend his money, the wallet tries to build the transaction with the following steps.</p>
+<ul>
+<li>Search the network to find available <code>UTXO</code>s belonged to Bob</li>
+<li>Create the transaction inputs with enough <code>UTXO</code>s and Bob’s <code>signature</code> and <code>public key</code></li>
+<li>Specify the target output to Alice and the change output to Bob</li>
+<li>Send the transaction to Bitcoin network and wait for confirmations</li>
+</ul>
+<p>Show me the script. Now!</p>
+<p>Ok, here it is.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fdf4c1aa;">OP_DUP OP_HASH160 &lt;Alice&#39;s Public Key Hash&gt; OP_EQUALVERIFY OP_CHECKSIG
+</span></pre>
+<p>This is the script bundled with the transaction output targeting Alice. We call it the <code>locking script</code>, because it locks the money of the <code>UTXO</code> until Alice spends it someday with an unlocking script built with correct information. And the unlocking script looks like this.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fdf4c1aa;">&lt;Alice&#39;s Signature&gt; &lt;Alice&#39;s Public Key&gt;
+</span></pre>
+<p>The transaction of spending the money Alice received is processed by the <code>miners</code> in the Bitcoin network. They combine the solution (<code>unlocking script</code>) together with the puzzle (<code>locking script</code>) to form the following <code>validation script</code>.</p>
+<pre style="background-color:#282828">
+<span style="background-color:#282828;color:#fdf4c1aa;">&lt;Alice&#39;s Signature&gt; &lt;Alice&#39;s Public Key&gt; OP_DUP OP_HASH160 &lt;Alice&#39;s Public Key Hash&gt; OP_EQUALVERIFY OP_CHECKSIG
+</span></pre>
+<p>Let's execute it word by word with a stack in mind.</p>
+<ul>
+<li>Push <code>&lt;Alice's Signature&gt;</code> into the stack</li>
+</ul>
+<table><thead><tr><th align="center"> index </th><th align="center"> item </th></tr></thead><tbody>
+<tr><td align="center"> 0 </td><td align="center"> <code>&lt;Alice's Signature&gt;</code> </td></tr>
+</tbody></table>
+<ul>
+<li>Push <code>&lt;Alice's Public Key&gt;</code> into the stack</li>
+</ul>
+<table><thead><tr><th> index </th><th> item </th></tr></thead><tbody>
+<tr><td align="center"> 1 </td><td align="center"> <code>&lt;Alice's Public Key&gt;</code> </td></tr>
+<tr><td align="center"> 0 </td><td align="center"> <code>&lt;Alice's Signature&gt;</code> </td></tr>
+</tbody></table>
+<ul>
+<li>OP_DUP is an operator to duplicate the top item in the stack, and now we have the stack like this</li>
+</ul>
+<table><thead><tr><th> index </th><th> item </th></tr></thead><tbody>
+<tr><td align="center"> 2 </td><td align="center"> <code>&lt;Alice's Public Key&gt;</code> </td></tr>
+<tr><td align="center"> 1 </td><td align="center"> <code>&lt;Alice's Public Key&gt;</code> </td></tr>
+<tr><td align="center"> 0 </td><td align="center"> <code>&lt;Alice's Signature&gt;</code> </td></tr>
+</tbody></table>
+<ul>
+<li>OP_HASH160 is an operator to calculate the hash of the top item, and push the resulting value back to the stack</li>
+</ul>
+<table><thead><tr><th> index </th><th> item </th></tr></thead><tbody>
+<tr><td align="center"> 2 </td><td align="center"> <code>&lt;Alice's Public Key Hash&gt;</code> </td></tr>
+<tr><td align="center"> 1 </td><td align="center"> <code>&lt;Alice's Public Key&gt;</code> </td></tr>
+<tr><td align="center"> 0 </td><td align="center"> <code>&lt;Alice's Signature&gt;</code> </td></tr>
+</tbody></table>
+<ul>
+<li>Push <code>&lt;Alice's Public Key Hash&gt;</code> into the stack</li>
+</ul>
+<table><thead><tr><th> index </th><th> item </th></tr></thead><tbody>
+<tr><td align="center"> 3 </td><td align="center"> <code>&lt;Alice's Public Key Hash&gt;</code> </td></tr>
+<tr><td align="center"> 2 </td><td align="center"> <code>&lt;Alice's Public Key Hash&gt;</code> </td></tr>
+<tr><td align="center"> 1 </td><td align="center"> <code>&lt;Alice's Public Key&gt;</code> </td></tr>
+<tr><td align="center"> 0 </td><td align="center"> <code>&lt;Alice's Signature&gt;</code> </td></tr>
+</tbody></table>
+<ul>
+<li>OP_EQUALVERIFY compares the public key hash carried by the puzzle with the one calculated before, and continues the execution if they are the same</li>
+</ul>
+<table><thead><tr><th> index </th><th> item </th></tr></thead><tbody>
+<tr><td align="center"> 1 </td><td align="center"> <code>&lt;Alice's Public Key&gt;</code> </td></tr>
+<tr><td align="center"> 0 </td><td align="center"> <code>&lt;Alice's Signature&gt;</code> </td></tr>
+</tbody></table>
+<ul>
+<li>OP_CHECKSIG checks that the signature <code>&lt;Alice's Signature&gt;</code> matches the public key <code>&lt;Alice's Public Key&gt;</code>, and pushes TRUE into the stack if true</li>
+</ul>
+<table><thead><tr><th> index </th><th> item </th></tr></thead><tbody>
+<tr><td align="center"> 0 </td><td align="center"> <code>True</code> </td></tr>
+</tbody></table>
+<p>After finishing the above &quot;complicated&quot; processing, Alice can spend her fortune to buy anything she can afford.You may wonder What the heck a signature is, or how it's calculated. I will explain this in detail in later posts;)</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>No one would argue that Bitcoin is an amazing invention in the last decades. And understanding the underlying mechanism gives us lots of fun. So keep hacking everyday. See you later;)</p>
+<h3 id="disclaimer">Disclaimer</h3>
+<p>As you see, I’m not a native English speaker. Feel free to point out any typo or error in grammar. Thanks;)</p>
+
+    </div>
+    
+      <div id='disqus_thread'></div><script>var disqus_config = function () {};(function() {var d = document, s = d.createElement('script');s.src = 'https://blogmicrodimen.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript>
+    
+</article>
+
+
+        
+
+    </div>
+</body>
+</html>
